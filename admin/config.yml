@@ -2,6 +2,8 @@ backend:
   name: github
   repo: alwahidi-clan/alwhidy-site
   branch: main
+  base_url: https://alwahidi-clan.github.io
+  auth_endpoint: admin/index.html
 
 media_folder: "images"
 public_folder: "images"
