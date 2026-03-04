@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الموقع الرسمي لعشيرة الوحيدي</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700&display=swap');
+        
+        /* إعدادات الصورة الخلفية */
+        .hero-bg {
+            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+                        url('background.jpg'); /* اسم ملف صورتك هنا */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 80vh;
+        }
+
+        h1 { font-family: 'Amiri', serif; }
+        body { font-family: 'Cairo', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <div class="hero-bg flex items-center justify-center text-center text-white px-4">
+        <div>
+            <h1 class="text-5xl md:text-7xl font-bold mb-4">رابطة عشيرة الوحيدي</h1>
+            <p class="text-xl md:text-2xl tracking-widest border-t border-b py-2 inline-block">المنصة الرسمية الموثقة</p>
+        </div>
+    </div>
+
+    <main class="container mx-auto -mt-20 relative z-10 px-4 pb-20">
+        <div class="bg-white rounded-xl shadow-2xl p-8 md:p-12">
+            <h2 class="text-3xl font-bold mb-10 text-center text-slate-800 border-b pb-4">آخر الأخبار والفعاليات</h2>
+
+            <div class="space-y-12">
+                
+                <div class="flex flex-col md:flex-row gap-8 items-start border-b pb-10">
+                    <div class="md:w-1/4">
+                        <span class="text-blue-600 font-bold block text-lg">04 مارس 2026</span>
+                        <span class="text-gray-400">إعلان رسمي</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-2xl font-bold mb-3 hover:text-blue-700 cursor-pointer">عنوان الخبر أو الحدث هنا (مثلاً: افتتاح ديوان العشيرة الجديد)</h3>
+                        <p class="text-gray-600 leading-relaxed mb-4 text-lg">
+                            هنا تضع تفاصيل الخبر بالكامل. هذا التصميم يركز على النص والوضوح الرسمي ليكون مرجعاً لكل أبناء العشيرة.
+                        </p>
+                    </div>
+                </div>
+
+                </div>
+        </div>
+    </main>
+
+    <footer class="bg-slate-900 text-white py-10 text-center">
+        <p class="opacity-70">الموقع الرسمي لعشيرة الوحيدي © 2026</p>
+    </footer>
+
+</body>
+</html>
