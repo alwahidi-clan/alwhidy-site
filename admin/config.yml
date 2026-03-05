@@ -2,18 +2,17 @@ backend:
   name: github
   repo: alwahidi-clan/alwhidy-site
   branch: main
-  base_url: https://alwahidi-clan.github.io
-  auth_endpoint: admin/index.html
 
 media_folder: "images"
-public_folder: "images"
+public_folder: "/images"
 
 collections:
   - name: "news"
     label: "الأخبار"
     folder: "_news"
     create: true
+    slug: "{{slug}}"
     fields:
-      - { label: "العنوان", name: "title", widget: "string" }
-      - { label: "التاريخ", name: "date", widget: "datetime" }
-      - { label: "نص الخبر", name: "body", widget: "markdown" }
+      - {label: "العنوان", name: "title", widget: "string"}
+      - {label: "تاريخ النشر", name: "date", widget: "datetime"}
+      - {label: "تفاصيل الخبر", name: "body", widget: "markdown"}
