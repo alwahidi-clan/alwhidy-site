@@ -3,553 +3,125 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عشيرة الوحيدي - الموقع الرسمي</title>
-    <!-- Google Fonts (خط أحدث) -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <!-- Font Awesome (أيقونات) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>موقع عشيرتي</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
-        :root {
-            --primary: #1a3a5f;       /* الأزرق العميق */
-            --primary-dark: #0f2a44;
-            --gold: #c5a059;          /* الذهبي */
-            --gold-light: #d4b678;
-            --bg: #f8fafc;
-            --text-dark: #2d3e50;
-            --text-light: #5a6f7d;
-            --white: #ffffff;
-            --gray-bg: #f0f3f7;
-        }
-
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-dark);
-            line-height: 1.6;
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            color: #333;
         }
-
-        /* شريط التنقل */
-        .navbar {
-            background-color: var(--white);
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
-            padding: 15px 30px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .logo i {
-            font-size: 2rem;
-            color: var(--gold);
-        }
-
-        .logo span {
-            font-weight: 900;
-            font-size: 1.5rem;
-            color: var(--primary);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 25px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: color 0.3s;
-            padding: 5px 0;
-        }
-
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: var(--gold);
-            border-bottom: 3px solid var(--gold);
-        }
-
-        /* الهيدر الرئيسي */
-        .hero {
-            background: linear-gradient(135deg, var(--primary) 0%, #2b4b73 100%);
+        header {
+            background: #1e3c5c;
             color: white;
-            padding: 60px 20px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-        }
-
-        @keyframes rotate {
-            from { transform: rotate(0deg); }
-            to { transform: rotate(360deg); }
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero-logo {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid var(--gold);
-            margin-bottom: 20px;
-            background: white;
-            object-fit: cover;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .hero h1 {
-            font-weight: 900;
-            font-size: 3em;
-            margin: 10px 0;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            opacity: 0.9;
-        }
-
-        /* الحاوية الرئيسية */
-        .container {
-            max-width: 1200px;
-            margin: -40px auto 40px;
-            padding: 0 20px;
-            position: relative;
-            z-index: 10;
-        }signature-card {
-            background: white;
-            border-radius: 50px;
-            padding: 15px 25px;
-            margin-bottom: 40px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            border: 1px solid rgba(197, 160, 89, 0.3);
-            font-size: 1.2rem;
-        }
-
-        .signature-card i {
-            color: var(--gold);
-            margin-left: 5px;
-        }
-
-        .signature-card span {
-            color: var(--primary);
-            font-weight: 900;
-            font-size: 1.4rem;
-            margin-right: 10px;
-        }
-
-        /* أزرار التواصل */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 50px;
-        }
-
-        .btn {
-            text-decoration: none;
-            color: white;
-            padding: 18px 10px;
-            border-radius: 12px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 1.2rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-        }
-
-        .btn.whatsapp { background: #25D366; }
-        .btn.facebook { background: #1877F2; }
-        .btn.call { background: var(--gold); }
-
-        /* أقسام الصفحة */
-        .section-title {
-            color: var(--primary);
-            font-size: 2rem;
-            font-weight: 900;
-            margin-bottom: 30px;
-            border-right: 8px solid var(--gold);
-            padding-right: 20px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 20px;
             padding: 30px;
-            margin-bottom: 40px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
-            border: 1px solid #eef2f6;
         }
-
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            align-items: center;
-        }
-
-        .about-text p {
-            margin-bottom: 15px;
-            color: var(--text-light);
-            font-size: 1.1rem;
-        }
-
-        .stats {
-            display: flex;
-            justify-content: space-around;
-            text-align: center;
-        }
-
-        .stat-item {
-            background: var(--gray-bg);
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
             padding: 20px;
-            border-radius: 15px;
-            min-width: 100px;
+            background: white;
+            border-radius: 12px;
         }
-
-        .stat-number {
-            display: block;
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--gold);
+        .section-title {
+            color: #1e3c5c;
+            border-right: 5px solid gold;
+            padding-right: 10px;
+            margin: 30px 0 20px;
         }
-
-        .stat-label {
-            color: var(--primary);
-            font-weight: 700;
-        }
-
-        /* شبكة الأخبار */
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .news-item {
-            background: var(--gray-bg);
-            border-radius: 15px;
-            padding: 20px;
-            transition: 0.3s;
-        }
-
-        .news-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-        }
-
-        .news-date {
-            color: var(--gold);
-            font-weight: 700;
-            margin-bottom: 10px;
-        }
-
-        /* معرض الصور */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .gallery-item {
-            background: var(--gray-bg);
-            border-radius: 15px;
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-            border: 2px dashed var(--gold);
-            transition: 0.3s;
-        }gallery-item i {
-            font-size: 3rem;
-            margin-left: 10px;
-        }
-
-        .gallery-item:hover {
-            background: var(--gold-light);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        /* نموذج الاتصال */
-        .contact-form {
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        input, textarea {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #e0e7ed;
+        .card {
+            background: #f9f9f9;
             border-radius: 10px;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1rem;
-            transition: 0.3s;
+            padding: 15px;
+            margin-bottom: 15px;
         }
-
-        input:focus, textarea:focus {
-            outline: none;
-            border-color: var(--gold);
-        }
-
-        .submit-btn {
-            background: var(--primary);
+        button {
+            background: #1e3c5c;
             color: white;
             border: none;
-            padding: 15px 30px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            border-radius: 10px;
+            padding: 8px 12px;
+            border-radius: 6px;
             cursor: pointer;
-            transition: 0.3s;
+        }
+        input, textarea {
             width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
         }
-
-        .submit-btn:hover {
-            background: var(--gold);
-        }
-
-        /* الفوتر */
-        footer {
-            background: var(--primary-dark);
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 60px;
-        }
-
-        .footer-content p {
-            margin: 10px 0;
-            opacity: 0.9;
-        }
-
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 25px;
-            margin: 20px 0;
-        }
-
-        .social-links a {
-            color: white;
-            font-size: 1.8rem;
-            transition: 0.3s;
-        }
-
-        .social-links a:hover {
-            color: var(--gold);
-            transform: translateY(-3px);
-        }
-
-        /* تحسينات للجوال */
-        @media (max-width: 768px) {
-            .navbar {
-                flex-direction: column;
-                gap: 15px;
-            }
-            .nav-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-            .about-content {
-                grid-template-columns: 1fr;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
+        .badge {
+            background: gold;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <!-- شريط التنقل -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="fas fa-tree"></i>
-            <span>الوحيدي</span>
-        </div>
-        <ul class="nav-links">
-            <li><a href="#" class="active">الرئيسية</a></li>
-            <li><a href="#about">عن العشيرة</a></li>
-            <li><a href="#news">الأخبار</a></li>
-            <li><a href="#gallery">معرض الصور</a></li>
-            <li><a href="#contact">اتصل بنا</a></li>
-        </ul>
-    </nav>
-
-    <!-- الهيدر -->
-    <header class="hero">
-        <div class="hero-content">
-            <img src="logo.jpg" alt="شعار الوحيدي" class="hero-logo" onerror="this.src='https://via.placeholder.com/150?text=شعار'">
-            <h1>موقع عشيرة الوحيدي</h1>
-            <p>بوابة التواصل الرسمية لأبناء العشيرة الكرام</p>
-            <p style="margin-top: 10px; font-size: 1.1rem;">نسب عريق ومستقبل مشرق</p>
-        </div>
+    <header>
+        <h1>🌟 موقع العائلة</h1>
+        <p>بإشراف: حسن وسام الوحيدي</p>
     </header>
-
     <div class="container">
-        <!-- بطاقة الإشراف -->
-        <div class="signature-card">
-            <i class="fas fa-user-shield"></i> إشراف وتنفيذ: <span>حسن وسام الوحيدي</span>
-        </div>
+        <h2 class="section-title">➕ إضافة منشور</h2>
+        <input type="text" id="title" placeholder="العنوان">
+        <input type="date" id="date">
+        <textarea id="desc" placeholder="الوصف"></textarea>
+        <button onclick="addPost()">أضف منشور</button>
 
-        <!-- أزرار التواصل -->
-        <div class="contact-grid">
-            <a href="https://wa.me/972590000000" class="btn whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
-            <a href="#" class="btn facebook"><i class="fab fa-facebook-f"></i> فيسبوك</a>
-            <a href="tel:0590000000" class="btn call"><i class="fas fa-phone-alt"></i> اتصل بنا</a>
-        </div><!-- قسم: عن العشيرة -->
-        <section id="about" class="card">
-            <h2 class="section-title">عن عشيرة الوحيدي</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>تعتبر عشيرة الوحيدي من العشائر العريقة ذات التاريخ المشرف، تمتد جذورها في عمق التاريخ. نحن فخورون بأصولنا ونسعى للحفاظ على تراثنا وروح التكاتف بين أبناء العشيرة.</p>
-                    <p>هذا الموقع هو منصة للتواصل ونشر أخبار العشيرة والفعاليات المختلفة. نسأل الله أن يديم المحبة والألفة بيننا.</p>
-                    <div class="stats" style="margin-top: 20px;">
-                        <div class="stat-item">
-                            <span class="stat-number">+١٠٠</span>
-                            <span class="stat-label">عائلة</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number">+٥٠٠</span>
-                            <span class="stat-label">فرد</span>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <img src="https://via.placeholder.com/400x250?text=صورة+العشيرة" alt="صورة رمزية" style="width:100%; border-radius:15px;">
-                </div>
-            </div>
-        </section>
+        <h2 class="section-title">📄 المنشورات</h2>
+        <div id="posts"></div>
+    </div>
 
-        <!-- قسم: آخر الأخبار -->
-        <section id="news" class="card">
-            <h2 class="section-title">آخر الأخبار والمناسبات</h2>
-            <div class="news-grid">
-                <div class="news-item">
-                    <div class="news-date"><i class="far fa-calendar-alt"></i> ١ يناير ٢٠٢٦</div>
-                    <h3>اجتماع العشيرة السنوي</h3>
-                    <p>سيتم عقد الاجتماع السنوي في مقر الديوان يوم الجمعة القادم، ندعو الجميع للحضور.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date"><i class="far fa-calendar-alt"></i> ١٥ يناير ٢٠٢٦</div>
-                    <h3>تهاني بمناسبة العام الجديد</h3>
-                    <p>تتقدم إدارة الموقع بأصدق التهاني بمناسبة حلول العام الجديد، أعاده الله علينا بالخير.</p>
-                </div>
-                <div class="news-item">
-                    <div class="news-date"><i class="far fa-calendar-alt"></i> ٢٠ فبراير ٢٠٢٦</div>
-                    <h3>إطلاق الموقع الجديد</h3>
-                    <p>يسرنا إطلاق الموقع الرسمي الجديد للعشيرة، نتمنى أن ينال إعجابكم.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- قسم: معرض الصور -->
-        <section id="gallery" class="card">
-            <h2 class="section-title">معرض الصور</h2>
-            <div class="gallery-grid">
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ١</div>
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ٢</div>
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ٣</div>
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ٤</div>
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ٥</div>
-                <div class="gallery-item"><i class="fas fa-image"></i> صورة ٦</div>
-            </div>
-        </section>
-
-        <!-- قسم: اتصل بنا -->
-        <section id="contact" class="card">
-            <h2 class="section-title">تواصل معنا</h2>
-            <form class="contact-form">
-                <div class="form-group">
-                    <input type="text" placeholder="الاسم الكريم" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" placeholder="البريد الإلكتروني (اختياري)">
-                </div>
-                <div class="form-group">
-                    <textarea rows="4" placeholder="رسالتك أو استفسارك..."></textarea>
-                </div>
-                <button type="submit" class="submit-btn">إرسال <i class="fas fa-paper-plane"></i></button>
-            </form>
-        </section>
-    </div><!-- الفوتر -->
-    <footer>
-        <div class="footer-content">
-            <div class="logo" style="justify-content: center; color: white;">
-                <i class="fas fa-tree"></i>
-                <span style="color: white;">الوحيدي</span>
-            </div>
-            <p>جميع الحقوق محفوظة © ١٤٤٧ هـ - ٢٠٢٦ م</p>
-            <p>إدارة: حسن وسام الوحيدي</p>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
-                <a href="#"><i class="fab fa-telegram"></i></a>
-                <a href="#"><i class="fas fa-envelope"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- (اختياري) سكربت بسيط لتمرير سلس -->
     <script>
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                if(targetId !== '#') {
-                    const targetElement = document.querySelector(targetId);
-                    if(targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }
+        let posts = [];
+
+        function showPosts() {
+            const container = document.getElementById('posts');
+            if (posts.length === 0) {
+                container.innerHTML = "<p>لا توجد منشورات بعد</p>";
+                return;
+            }
+            let html = '';
+            posts.forEach((p, i) => {
+                html += 
+                    <div class="card">
+                        <span class="badge">${p.date}</span>
+                        <h3>${p.title}</h3>
+                        <p>${p.desc}</p>
+                        <button onclick="deletePost(${i})">حذف</button>
+                    </div>
+                ;
             });
-        });
+            container.innerHTML = html;
+        }
+
+        function addPost() {
+            const title = document.getElementById('title').value;
+            const date = document.getElementById('date').value;
+            const desc = document.getElementById('desc').value;
+            if (!title  !date  !desc) {
+                alert("املأ جميع الحقول");
+                return;
+            }
+            posts.push({ title, date, desc });
+            showPosts();
+            document.getElementById('title').value = '';
+            document.getElementById('desc').value = '';
+        }
+
+        function deletePost(i) {
+            posts.splice(i, 1);
+            showPosts();
+        }
+
+        showPosts();
     </script>
 </body>
 </html>
