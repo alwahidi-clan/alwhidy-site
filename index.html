@@ -3,122 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>رابطة عشيرة الوحيدي | الموقع الرسمي</title>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <title>رابطة عشيرة الوحيدي | المنصة الرسمية</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            /* ألوان متناسقة مع البانر الجديد (6919) */
-            --primary: #1e3a8a; /* كحلي متناسق مع البانر */
-            --accent: #c6a360;  /* ذهبي متناسق مع الشعار */
-            --text-light: #f1f5f9;
-            --card-bg: rgba(20, 25, 35, 0.85);
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background-color: #0f172a; /* خلفية غامقة لإبراز المحتوى */
-            color: var(--text-light);
-            margin: 0;
-            padding: 0;
-        }
-
-        /* الهيدر مع البانر الجديد (6919) */
+        :root { --main: #1a2a6c; --gold: #b38728; --dark: #0f172a; }
+        body { font-family: 'Cairo', sans-serif; background-color: #f8fafc; margin: 0; color: #333; }
+        
+        /* الهيدر باستخدام البانر الخاص بك */
         header {
-            height: 60vh;
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(15, 23, 42, 0.9)), 
+                        url('baner.jpg') no-repeat center center/cover;
+            height: 400px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            color: white;
             text-align: center;
-            /* استخدام البانر المرفق كخلفية */
-            background: linear-gradient(to bottom, rgba(30, 58, 138, 0.7), rgba(15, 23, 42, 0.9)), 
-                        url('https://alwahidi-clan.github.io/alwhidy-site/baner.jpg'); 
-            background-size: cover;
-            background-position: center;
-            border-bottom: 2px solid var(--accent);
         }
 
-        /* الشعار الجديد (6918) فوق الاسم */
-        .logo {
-            width: 150px; /* حجم متناسق للشعار */
+        /* تنسيق الشعار ليكون بدون خلفية بيضاء مزعجة */
+        .logo-img {
+            width: 140px;
             height: auto;
-            margin-bottom: 20px;
+            border-radius: 50%; /* لجعل الشعار دائري إذا كان له خلفية */
+            margin-bottom: 15px;
+            border: 3px solid var(--gold);
         }
 
-        header h1 {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin: 0;
-            /* نص ترحيبي متناسق */
-            background: linear-gradient(to right, #fff, var(--accent), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+        header h1 { font-size: 3rem; margin: 0; font-weight: 900; }
+        header p { font-size: 1.2rem; color: var(--gold); margin-top: 5px; }
 
-        .container {
-            max-width: 1200px;
-            margin: -50px auto 50px auto;
-            padding: 0 20px;
-        }
+        .container { max-width: 1100px; margin: -40px auto 40px; padding: 0 20px; }
 
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 25px;
-        }
+        /* قسم الأخبار الرسمية */
+        .news-section { background: white; padding: 30px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .section-title { border-right: 5px solid var(--main); padding-right: 15px; margin-bottom: 30px; color: var(--main); }
+        
+        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+        .news-item { border: 1px solid #eee; padding: 20px; border-radius: 10px; transition: 0.3s; }
+        .news-item:hover { border-color: var(--gold); background: #fefcf6; }
 
-        .card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            overflow: hidden;
-            border: 1px solid rgba(198, 163, 96, 0.3);
-            transition: 0.3s;
-        }
-
-        .card:hover { transform: translateY(-10px); border-color: var(--accent); }
-
-        .card img {
-            width: 100%;
-            height: 230px;
-            object-fit: cover;
-        }
-
-        .card-body { padding: 25px; }
-
-        .btn {
-            display: inline-block;
-            padding: 10px 20px;
-            background: var(--accent);
-            color: #0f172a;
+        /* قسم التواصل الاجتماعي (مثل الصورة 6310) */
+        .contact-section { background: var(--dark); color: white; padding: 60px 20px; text-align: center; margin-top: 50px; }
+        .social-links { display: flex; justify-content: center; gap: 30px; margin-top: 30px; flex-wrap: wrap; }
+        .social-box {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            width: 150px;
+            border-radius: 12px;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
+            color: white;
+            transition: 0.3s;
+            border: 1px solid transparent;
         }
+        .social-box:hover { background: var(--gold); color: var(--dark); border-color: white; transform: translateY(-5px); }
+        .social-box i { font-size: 2rem; display: block; margin-bottom: 10px; }
 
-        footer { 
-            text-align: center; 
-            padding: 40px 0; 
-            border-top: 1px solid rgba(255,255,255,0.1); 
-            background-color: #0a0f1e;
-        }
+        footer { background: #000; color: #777; text-align: center; padding: 20px; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="https://alwahidi-clan.github.io/alwhidy-site/logo.jpg" alt="شعار رابطة عشيرة الوحيدي" class="logo">
-    <h1>رابطة عشيرة الوحيدي</h1>
-    <p style="color: var(--accent); letter-spacing: 2px; margin-top: 10px;">أهلاً بكم في الموقع الرسمي</p>
+    <img src="logo.jpg" alt="شعار الوحيدي" class="logo-img"> <h1>رابطة عشيرة الوحيدي</h1>
+    <p>الموقع الرسمي - أخبار، مناسبات، تواصل</p>
 </header>
 
 <div class="container">
-    <div class="news-grid">
-        <div class="card">
-            <img src="https://images.pexels.com/photos/1996333/pexels-photo-1996333.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="خيل عربي">
-            <div class="card-body">
-                <span style="color: var(--accent); font-size: 0.8rem;">تراث وأصالة</span>
-                <h3>سباقات الفروسية السنوية</h3>
-                <p>تستعد الرابطة لإطلاق سباق الخيل السنوي الذي يجمع أبناء العشيرة في تظاهرة رياضية وتراثية كبرى.</p>
-                <a href="#" class="btn">التفاصيل</a>
+    <div class="news-section">
+        <h2 class="section-title">آخر أخبار ومستجدات العائلة</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <span style="color: var(--gold); font-weight: bold;">إعلان هام</span>
+                <h3>انطلاق المنصة الرسمية</h3>
+                <p>تم تدشين الموقع الرسمي لرابطة عشيرة الوحيدي ليكون المرجع الأول لأخبار العائلة.</p>
             </div>
-        </div>
+            </div>
+    </div>
+</div>
+
+<div class="contact-section">
+    <h2>تواصل معنا (ديوان الرابطة)</h2>
+    <p>يمكنكم التواصل مع إدارة الرابطة عبر القنوات التالية:</p>
+    <div class="social-links">
+   
+
