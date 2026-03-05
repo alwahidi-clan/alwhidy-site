@@ -50,7 +50,7 @@
             <a href="tel:+970567778040" class="call"><i class="fas fa-phone"></i> اتصال</a>
         </div>
         
-        <!-- لوحة التحكم -->
+        <!-- لوحة التحكم (تظهر فقط مع #admin) -->
         <div id="adminPanel">
             <h3><i class="fas fa-cog"></i> لوحة التحكم</h3>
             
@@ -64,7 +64,9 @@
                     <button onclick="addNews()">حفظ</button>
                 </div>
                 
-                <div><input type="date" id="achDate">
+                <div>
+                    <h4>➕ إضافة إنجاز</h4><input type="text" id="achTitle" placeholder="العنوان">
+                    <input type="date" id="achDate">
                     <textarea id="achDesc" placeholder="الوصف" rows="3"></textarea>
                     <button onclick="addAchievement()">حفظ</button>
                 </div>
@@ -85,14 +87,16 @@
     </div>
     
     <script>
+        // تحميل البيانات
         let news = JSON.parse(localStorage.getItem('news')) || [];
         let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
         
-        // لوحة التحكم
+        // إظهار لوحة التحكم إذا كان الرابط يحتوي #admin
         if (window.location.hash === '#admin') {
             document.getElementById('adminPanel').style.display = 'block';
         }
         
+        // عرض الأخبار
         function displayNews() {
             let html = '';
             news.forEach((item, i) => {
@@ -107,6 +111,7 @@
             document.getElementById('newsContainer').innerHTML = html || '<p>لا توجد أخبار</p>';
         }
         
+        // عرض الإنجازات
         function displayAchievements() {
             let html = '';
             achievements.forEach((item, i) => {
@@ -120,6 +125,7 @@
             document.getElementById('achievementsContainer').innerHTML = html || '<p>لا توجد إنجازات</p>';
         }
         
+        // إضافة خبر
         function addNews() {
             let title = document.getElementById('newsTitle').value;
             let date = document.getElementById('newsDate').value;
@@ -133,6 +139,7 @@
             document.getElementById('newsContent').value = '';
         }
         
+        // إضافة إنجاز
         function addAchievement() {
             let title = document.getElementById('achTitle').value;
             let date = document.getElementById('achDate').value;
@@ -145,22 +152,22 @@
             document.getElementById('achDesc').value = '';
         }
         
+        // حذف خبر
         function deleteNews(i) {
             news.splice(i, 1);
-            localStorage.setItem('news', JSON.stringify(news));
-            displayNews();
+            localStorage.setItem('news', JSON.stringify(news));displayNews();
         }
         
+        // حذف إنجاز
         function deleteAchievement(i) {
             achievements.splice(i, 1);
             localStorage.setItem('achievements', JSON.stringify(achievements));
             displayAchievements();
         }
         
+        // تشغيل
         displayNews();
         displayAchievements();
     </script>
 </body>
 </html>
-                    <h4>➕ إضافة إنجاز</h4>
-                    <input type="text" id="achTitle" placeholder="العنوان">
