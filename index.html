@@ -3,305 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>عشيرة الوحيدي - الموقع الرسمي</title>
-    <meta name="google" content="notranslate">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>عائلتي - سجل المنشورات</title>
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Tajawal', sans-serif; }
-        body { background: #f4f7f6; }
-        
-        /* الهيدر */
-        .header {
-            background: #1a3a5f; color: white; padding: 40px 15px; text-align: center;
-            border-bottom: 5px solid #c5a059;
+        * { font-family: Arial, sans-serif; }
+        body { background: #f0f2f5; padding: 20px; }
+        .box {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        .header h1 { font-size: 2.5rem; margin-bottom: 10px; }
-        .header p { font-size: 1.2rem; opacity: 0.9; }
-        
-        /* الحاوية */
-        .container { max-width: 1100px; margin: 20px auto; padding: 15px; }
-        
-        /* بطاقة الإشراف */
-        .signature {
-            background: white; padding: 15px; border-radius: 50px; text-align: center;
-            margin-bottom: 25px; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            font-size: 1.2rem;
+        input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 6px;
         }
-        .signature span { color: #1a3a5f; font-weight: 900; font-size: 1.4rem; }
-        
-        /* أزرار التواصل */
-        .btns {
-            display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px;
-            margin-bottom: 40px;
+        button {
+            background: #1e3c5c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
         }
-        .btns a {
-            text-decoration: none; color: white; padding: 15px; border-radius: 10px;
-            text-align: center; font-weight: bold; font-size: 1.1rem;
-            display: flex; align-items: center; justify-content: center; gap: 8px;
+        .post {
+            background: #f9f9f9;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+            border-right: 4px solid gold;
         }
-        .whatsapp { background: #25D366; }
-        .facebook { background: #1877F2; }
-        .call { background: #c5a059; }
-        
-        /* عناوين الأقسام */
-        .section-title {
-            color: #1a3a5f; font-size: 2rem; font-weight: 900; margin: 40px 0 25px;
-            border-right: 8px solid #c5a059; padding-right: 20px;
+        .date { color: #666; font-size: 0.9rem; }
+        .delete {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
         }
-        
-        /* شبكة البطاقات */
-        .cards-grid {
-            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px; margin-bottom: 40px;
-        }
-        
-        .card {
-            background: white; border-radius: 15px; padding: 25px;
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1); border: 1px solid #eee;
-        }
-        
-        .badge {
-            background: #c5a059; color: white; padding: 5px 15px; border-radius: 20px;
-            display: inline-block; margin-bottom: 15px; font-weight: bold;
-        }
-        
-        .date { color: #1a3a5f; font-weight: bold; margin-bottom: 15px; }
-        .card h3 { color: #1a3a5f; font-size: 1.4rem; margin-bottom: 10px; }
-        .card p { color: #666; line-height: 1.7; }
-        
-        /* قسم الإضافة (للمشرف فقط) */
-        .admin-section {
-            background: #f8f9fa; border-radius: 15px; padding: 25px;
-            margin: 30px 0; border: 2px dashed #c5a059;
-        }
-        .admin-section h3 { color: #1a3a5f; margin-bottom: 20px; }
-        
-        input, textarea, select {
-            width: 100%; padding: 12px; margin-bottom: 15px; border: 2px solid #ddd;
-            border-radius: 8px; font-family: 'Tajawal', sans-serif; font-size: 1rem;
-        }
-        
-        .btn {
-            background: #1a3a5f; color: white; border: none; padding: 12px 25px;
-            border-radius: 8px; font-weight: bold; cursor: pointer; font-size: 1rem;
-        }
-        .btn-delete {
-            background: #dc3545; padding: 5px 12px; margin-top: 10px;
-        }}
-        .add-tab {
-            flex: 1; padding: 12px; border: none; background: #e9ecef;
-            border-radius: 8px; font-weight: bold; cursor: pointer;
-        }
-        .add-tab.active { background: #1a3a5f; color: white; }
-        
-        .footer {
-            background: #1a3a5f; color: white; text-align: center;
-            padding: 40px; margin-top: 60px;
-        }
-        
-        .hidden { display: none; }
     </style>
 </head>
 <body>
-
-<div class="header">
-    <h1>عشيرة الوحيدي</h1>
-    <p>نسب عريق - حاضر مشرق - مستقبل واعد</p>
-</div>
-
-<div class="container">
-    
-    <div class="signature">
-        <i class="fas fa-user-shield"></i> إشراف: <span>حسن وسام الوحيدي</span>
-    </div>
-    
-    <div class="btns">
-        <a href="https://wa.me/972590000000" class="whatsapp"><i class="fab fa-whatsapp"></i> واتساب</a>
-        <a href="#" class="facebook"><i class="fab fa-facebook-f"></i> فيسبوك</a>
-        <a href="tel:0590000000" class="call"><i class="fas fa-phone"></i> اتصال</a>
-    </div>
-    
-    <!-- ===== قسم الإدارة (يظهر لك أنت فقط) ===== -->
-    <div class="admin-section">
-        <h3><i class="fas fa-cog"></i> لوحة التحكم (للمشرف فقط)</h3>
+    <div class="box">
+        <h2 style="color: #1e3c5c; text-align: center;">📝 سجل عائلتي</h2>
+        <p style="text-align: center;">بإشراف: حسن وسام الوحيدي</p>
         
-        <div class="add-tabs">
-            <button class="add-tab active" onclick="showForm('achievement')">🏆 إضافة إنجاز</button>
-            <button class="add-tab" onclick="showForm('news')">📰 إضافة خبر</button>
-        </div>
+        <hr>
         
-        <!-- نموذج إنجاز -->
-        <div id="achievementForm">
-            <input type="text" id="achTitle" placeholder="عنوان الإنجاز">
-            <input type="date" id="achDate">
-            <textarea id="achDesc" placeholder="وصف الإنجاز" rows="3"></textarea>
-            <button class="btn" onclick="addAchievement()">حفظ الإنجاز</button>
-        </div>
+        <h3>➕ إضافة منشور جديد</h3>
+        <input type="text" id="title" placeholder="العنوان">
+        <input type="date" id="date">
+        <textarea id="content" placeholder="المحتوى" rows="3"></textarea>
+        <button onclick="addPost()">أضف المنشور</button>
         
-        <!-- نموذج خبر -->
-        <div id="newsForm" class="hidden">
-            <input type="text" id="newsTitle" placeholder="عنوان الخبر">
-            <input type="date" id="newsDate">
-            <select id="newsCategory">
-                <option value="اجتماعات">اجتماعات</option>
-                <option value="مناسبات">مناسبات</option>
-                <option value="مشاريع">مشاريع</option>
-                <option value="فعاليات">فعاليات</option>
-            </select>
-            <textarea id="newsContent" placeholder="محتوى الخبر" rows="3"></textarea>
-            <button class="btn" onclick="addNews()">حفظ الخبر</button>
-        </div>
-    </div>
-    
-    <!-- ===== عرض الإنجازات ===== -->
-    <h2 class="section-title">🏆 إنجازات العشيرة</h2>
-    <div id="achievementsContainer" class="cards-grid">
-        <div style="text-align: center; padding: 40px;">جاري التحميل...</div>
-    </div>
-    
-    <!-- ===== عرض الأخبار ===== -->
-    <h2 class="section-title">📰 آخر الأخبار</h2>
-    <div id="newsContainer" class="cards-grid">
-        <div style="text-align: center; padding: 40px;">جاري التحميل...</div>
-    </div>
-    
-</div>
-
-<div class="footer">
-    <p>جميع الحقوق محفوظة © ١٤٤٧ هـ - ٢٠٢٦ م</p>
-    <p>إدارة وتطوير: حسن وسام الوحيدي</p>
-</div>
-
-<script>
-// البيانات
-let siteData = {
-    achievements: [
-        { id: 1, title: "تأسيس ديوان العشيرة", date: "2024-03-15", description: "تم بحمد الله افتتاح ديوان عشيرة الوحيدي بحضور كبار العشيرة" },
-        { id: 2, title: "لم الشمل السنوي", date: "2025-01-01", description: "أكبر تجمع سنوي لأبناء العشيرة بمشاركة ٣٠٠ فرد" },
-        { id: 3, title: "تكريم المتفوقين", date: "2025-02-10", description: "تكريم ٢٥ طالباً من المتفوقين في الثانوية العامة" }
-    ],
-    news: [
-        { id: 1, title: "اجتماع اللجنة الثقافية", date: "2025-02-20", category: "اجتماعات", content: "تعقد اللجنة الثقافية اجتماعها الدوري لمناقشة فعاليات رمضان" },
-        { id: 2, title: "تهنئة رمضان", date: "2025-02-25", category: "مناسبات", content: "تتقدم العائلة بأسمى آيات التهاني بقدوم شهر رمضان المبارك" }
-    ]
-};
+        <hr>
         
-        .add-tabs {
-            display: flex; gap: 10px; margin-bottom: 20px;function displayAchievements() {
-    let html = '';
-    siteData.achievements.forEach(item => {
-        html += 
-            <div class="card">
-                <div class="badge">${formatDate(item.date)}</div>
-                <h3>${item.title}</h3>
-                <p>${item.description}</p>
-                <button class="btn-delete" onclick="deleteAchievement(${item.id})"><i class="fas fa-trash"></i> حذف</button>
-            </div>
-        ;
-    });
-    document.getElementById('achievementsContainer').innerHTML = html || '<p style="text-align: center;">لا توجد إنجازات بعد</p>';
-}
+        <h3>📄 المنشورات</h3>
+        <div id="posts"></div>
+    </div>
 
-function displayNews() {
-    let html = '';
-    siteData.news.forEach(item => {
-        html += 
-            <div class="card">
-                <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
-                    <span class="badge">${item.category}</span>
-                    <span class="date">${formatDate(item.date)}</span>
-                </div>
-                <h3>${item.title}</h3>
-                <p>${item.content}</p>
-                <button class="btn-delete" onclick="deleteNews(${item.id})"><i class="fas fa-trash"></i> حذف</button>
-            </div>
-        ;
-    });
-    document.getElementById('newsContainer').innerHTML = html || '<p style="text-align: center;">لا توجد أخبار بعد</p>';
-}
-
-// إضافة
-function addAchievement() {
-    const title = document.getElementById('achTitle').value;
-    const date = document.getElementById('achDate').value;
-    const desc = document.getElementById('achDesc').value;
-    
-    if (!title  !date  !desc) {
-        alert('املأ جميع الحقول');
-        return;
-    }
-    
-    const newId = Math.max(...siteData.achievements.map(a => a.id), 0) + 1;
-    siteData.achievements.push({ id: newId, title, date, description: desc });
-    
-    document.getElementById('achTitle').value = '';
-    document.getElementById('achDesc').value = '';
-    
-    displayAchievements();
-    alert('تمت الإضافة بنجاح');
-}
-
-function addNews() {
-    const title = document.getElementById('newsTitle').value;
-    const date = document.getElementById('newsDate').value;
-    const category = document.getElementById('newsCategory').value;
-    const content = document.getElementById('newsContent').value;
-    
-    if (!title  !date  !category || !content) {
-        alert('املأ جميع الحقول');
-        return;
-    }
-    
-    const newId = Math.max(...siteData.news.map(n => n.id), 0) + 1;
-    siteData.news.push({ id: newId, title, date, category, content });
-    
-    document.getElementById('newsTitle').value = '';
-    document.getElementById('newsContent').value = '';
-    
-    displayNews();
-    alert('تمت الإضافة بنجاح');
-}
-
-// حذف
-function deleteAchievement(id) {
-    if (confirm('متأكد من الحذف؟')) {
-        siteData.achievements = siteData.achievements.filter(a => a.id !== id);
-        displayAchievements();
-    }
-}
-
-function deleteNews(id) {
-    if (confirm('متأكد من الحذف؟')) {
-        siteData.news = siteData.news.filter(n => n.id !== id);
-        displayNews();
-    }
-}
-
-// تبديل النماذج
-function showForm(type) {
-    document.querySelectorAll('.add-tab').forEach(btn => btn.classList.remove('active'));
-    event.target.classList.add('active');
-    
-    if (type === 'achievement') {
-        document.getElementById('achievementForm').classList.remove('hidden');
-        document.getElementById('newsForm').classList.add('hidden');
-    } else {
-        document.getElementById('achievementForm').classList.add('hidden');
-        document.getElementById('newsForm').classList.remove('hidden');
-    }
-}
-
-// تنسيق التاريخ
-function formatDate(dateString) {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('ar-EG');
-}
-
-// تشغيل
-displayAchievements();
-displayNews();
-</script>
-
+    <script>
+        // تحميل المنشورات المحفوظة
+        let posts = JSON.parse(localStorage.getItem('family_posts')) || [];
+        
+        function showPosts() {
+            let html = '';
+            if (posts.length === 0) {
+                html = '<p style="color: #999; text-align: center;">لا توجد منشورات بعد</p>';
+            } else {
+                posts.forEach((post, index) => {
+                    html += 
+                        <div class="post">
+                            <div class="date">📅 ${post.date}</div>
+                            <h3 style="margin: 5px 0;">${post.title}</h3>
+                            <p>${post.content}</p>
+                            <button class="delete" onclick="deletePost(${index})">🗑️ حذف</button>
+                        </div>
+                    ;
+                });
+            }
+            document.getElementById('posts').innerHTML = html;
+        }
+        
+        function addPost() {
+            let title = document.getElementById('title').value;
+            let date = document.getElementById('date').value;
+            let content = document.getElementById('content').value;
+            
+            if (!title  !date  !content) {
+                alert('الرجاء ملء جميع الحقول');
+                return;
+            }
+            
+            posts.push({ title, date, content });
+            localStorage.setItem('family_posts', JSON.stringify(posts));
+            
+            document.getElementById('title').value = '';
+            document.getElementById('content').value = '';
+            
+            showPosts();
+        }
+        
+        function deletePost(index) {
+            posts.splice(index, 1);
+            localStorage.setItem('family_posts', JSON.stringify(posts));
+            showPosts();
+        }
+        
+        showPosts();
+    </script>
 </body>
 </html>
