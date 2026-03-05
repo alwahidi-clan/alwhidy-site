@@ -10,7 +10,6 @@
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Tajawal',sans-serif; }
         body { background:#f4f7f6; }
         .header { background:#1a3a5f; color:white; padding:30px; text-align:center; border-bottom:5px solid #c5a059; }
-        .header h1 { font-size:2.5rem; }
         .container { max-width:1000px; margin:20px auto; padding:15px; background:white; border-radius:15px; }
         .signature { background:#f0f3f7; padding:15px; border-radius:50px; text-align:center; margin-bottom:25px; }
         .signature span { color:#1a3a5f; font-weight:900; }
@@ -20,17 +19,8 @@
         .facebook { background:#1877F2; }
         .call { background:#c5a059; }
         .section-title { color:#1a3a5f; font-size:1.8rem; border-right:5px solid #c5a059; padding-right:15px; margin:30px 0 20px; }
-        .cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
-        .card { background:#f9f9f9; padding:20px; border-radius:10px; }
-        .badge { background:#c5a059; color:white; padding:5px 15px; border-radius:20px; display:inline-block; margin-bottom:10px; }
-        .date { color:#1a3a5f; font-weight:bold; margin-bottom:10px; }
+        .news-item { background:#f9f9f9; padding:15px; margin-bottom:15px; border-radius:10px; border-right:4px solid #c5a059; }
         .footer { background:#1a3a5f; color:white; text-align:center; padding:30px; margin-top:50px; }
-        
-        /* لوحة التحكم */
-        #adminPanel { display:none; margin:20px 0; padding:20px; background:#f0f3f7; border-radius:10px; border:2px dashed #c5a059; }
-        input, textarea { width:100%; padding:10px; margin:5px 0; border:1px solid #ddd; border-radius:5px; }
-        button { background:#1a3a5f; color:white; border:none; padding:10px; border-radius:5px; cursor:pointer; margin:5px; }
-        .delete-btn { background:#dc3545; }
     </style>
 </head>
 <body>
@@ -50,124 +40,58 @@
             <a href="tel:+970567778040" class="call"><i class="fas fa-phone"></i> اتصال</a>
         </div>
         
-        <!-- لوحة التحكم (تظهر فقط مع #admin) -->
-        <div id="adminPanel">
-            <h3><i class="fas fa-cog"></i> لوحة التحكم</h3>
-            
-            <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
-                <div>
-                    <h4>➕ إضافة خبر</h4>
-                    <input type="text" id="newsTitle" placeholder="العنوان">
-                    <input type="date" id="newsDate">
-                    <input type="text" id="newsCategory" placeholder="التصنيف" value="اجتماعات">
-                    <textarea id="newsContent" placeholder="المحتوى" rows="3"></textarea>
-                    <button onclick="addNews()">حفظ</button>
-                </div>
-                
-                <div>
-                    <h4>➕ إضافة إنجاز</h4><input type="text" id="achTitle" placeholder="العنوان">
-                    <input type="date" id="achDate">
-                    <textarea id="achDesc" placeholder="الوصف" rows="3"></textarea>
-                    <button onclick="addAchievement()">حفظ</button>
-                </div>
-            </div>
-        </div>
-        
-        <!-- الأخبار -->
         <h2 class="section-title">📰 آخر الأخبار</h2>
-        <div id="newsContainer" class="cards"></div>
+        <div id="news"></div>
         
-        <!-- الإنجازات -->
         <h2 class="section-title">🏆 الإنجازات</h2>
-        <div id="achievementsContainer" class="cards"></div>
+        <div id="achievements"></div>
     </div>
     
     <div class="footer">
         <p>جميع الحقوق محفوظة © ٢٠٢٦</p>
     </div>
-    
+
     <script>
-        // تحميل البيانات
-        let news = JSON.parse(localStorage.getItem('news')) || [];
-        let achievements = JSON.parse(localStorage.getItem('achievements')) || [];
+        // ===== هنا بتعدل على الأخبار والإنجازات =====
+        const news = [
+            { date: "2026-01-01", title: "اجتماع العشيرة السنوي", content: "سيتم عقد الاجتماع السنوي في مقر الديوان" },
+            { date: "2026-01-15", title: "تهاني بمناسبة العام الجديد", content: "تتقدم إدارة الموقع بأصدق التهاني" },
+            { date: "2026-02-20", title: "إطلاق الموقع الجديد", content: "يسرنا إطلاق الموقع الرسمي الجديد للعشيرة" }
+        ];
         
-        // إظهار لوحة التحكم إذا كان الرابط يحتوي #admin
-        if (window.location.hash === '#admin') {
-            document.getElementById('adminPanel').style.display = 'block';
-        }
+        const achievements = [
+            { date: "2024-03-15", title: "تأسيس ديوان العشيرة", desc: "تم بحمد الله افتتاح ديوان عشيرة الوحيدي" },
+            { date: "2025-01-01", title: "لم الشمل السنوي", desc: "أكبر تجمع سنوي لأبناء العشيرة" },
+            { date: "2025-02-10", title: "تكريم المتفوقين", desc: "تكريم ٢٥ طالباً من المتفوقين" }
+        ];
         
-        // عرض الأخبار
-        function displayNews() {
+        // ===== عرض البيانات (لا تغير شيء تحت) =====
+        function showNews() {
             let html = '';
-            news.forEach((item, i) => {
-                html += <div class="card">
-                    <span class="badge">${item.category}</span>
-                    <div class="date">📅 ${item.date}</div>
+            news.forEach(item => {
+                html += `<div class="news-item">
+                    <div style="color:#c5a059;">📅 ${new Date(item.date).toLocaleDateString('ar-EG')}</div>
                     <h3>${item.title}</h3>
                     <p>${item.content}</p>
-                    <button class="delete-btn" onclick="deleteNews(${i})">حذف</button>
-                </div>;
+                </div>`;
             });
-            document.getElementById('newsContainer').innerHTML = html || '<p>لا توجد أخبار</p>';
+            document.getElementById('news').innerHTML = html;
         }
         
-        // عرض الإنجازات
-        function displayAchievements() {
+        function showAchievements() {
             let html = '';
-            achievements.forEach((item, i) => {
-                html += <div class="card">
-                    <div class="date">📅 ${item.date}</div>
+            achievements.forEach(item => {
+                html += `<div class="news-item">
+                    <div style="color:#c5a059;">📅 ${new Date(item.date).toLocaleDateString('ar-EG')}</div>
                     <h3>${item.title}</h3>
-                    <p>${item.description}</p>
-                    <button class="delete-btn" onclick="deleteAchievement(${i})">حذف</button>
-                </div>;
+                    <p>${item.desc}</p>
+                </div>`;
             });
-            document.getElementById('achievementsContainer').innerHTML = html || '<p>لا توجد إنجازات</p>';
+            document.getElementById('achievements').innerHTML = html;
         }
         
-        // إضافة خبر
-        function addNews() {
-            let title = document.getElementById('newsTitle').value;
-            let date = document.getElementById('newsDate').value;
-            let cat = document.getElementById('newsCategory').value;
-            let content = document.getElementById('newsContent').value;
-            if (!title  !date  !cat || !content) { alert('املأ الحقول'); return; }
-            news.push({ title, date, category:cat, content });
-            localStorage.setItem('news', JSON.stringify(news));
-            displayNews();
-            document.getElementById('newsTitle').value = '';
-            document.getElementById('newsContent').value = '';
-        }
-        
-        // إضافة إنجاز
-        function addAchievement() {
-            let title = document.getElementById('achTitle').value;
-            let date = document.getElementById('achDate').value;
-            let desc = document.getElementById('achDesc').value;
-            if (!title  !date  !desc) { alert('املأ الحقول'); return; }
-            achievements.push({ title, date, description:desc });
-            localStorage.setItem('achievements', JSON.stringify(achievements));
-            displayAchievements();
-            document.getElementById('achTitle').value = '';
-            document.getElementById('achDesc').value = '';
-        }
-        
-        // حذف خبر
-        function deleteNews(i) {
-            news.splice(i, 1);
-            localStorage.setItem('news', JSON.stringify(news));displayNews();
-        }
-        
-        // حذف إنجاز
-        function deleteAchievement(i) {
-            achievements.splice(i, 1);
-            localStorage.setItem('achievements', JSON.stringify(achievements));
-            displayAchievements();
-        }
-        
-        // تشغيل
-        displayNews();
-        displayAchievements();
+        showNews();
+        showAchievements();
     </script>
 </body>
 </html>
