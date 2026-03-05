@@ -10,31 +10,28 @@
         :root { --primary: #1a3a5f; --gold: #c5a059; --bg: #f4f7f6; }
         body { font-family: 'Cairo', sans-serif; background-color: var(--bg); margin: 0; }
         
-        /* البانر العلوي - إذا لم تظهر الصورة سيظهر لون كحلي فخم */
+        /* البانر العلوي - تم تعديل المسار والاسم ليتطابق مع صورتك */
         header { 
-            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), url('images/banner.jpg'), url('images/banner.png'); 
+            background: linear-gradient(rgba(26, 58, 95, 0.8), rgba(26, 58, 95, 0.8)), url('baner.jpg'); 
             background-size: cover; background-position: center;
             color: white; padding: 60px 20px; text-align: center; border-bottom: 6px solid var(--gold);
         }
         
-        /* الشعار - اللوجو */
+        /* اللوجو - تم تعديل المسار ليتطابق مع صورتك */
         .logo-img {
             width: 130px; height: 130px; border-radius: 50%; border: 4px solid var(--gold);
             margin-bottom: 15px; background: white; object-fit: cover; box-shadow: 0 4px 10px rgba(0,0,0,0.3);
         }
 
         h1 { font-weight: 900; font-size: 2.5em; margin: 10px 0; }
-        
         .container { max-width: 900px; margin: -30px auto 20px; padding: 25px; background: white; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1); }
         
-        /* خانة حسن وسام الوحيدي - بشكل ملكي */
         .signature-card {
             background: #fff; border: 2px solid var(--primary); border-right: 10px solid var(--gold);
             padding: 15px; border-radius: 8px; margin-bottom: 25px; text-align: center;
         }
         .signature-card span { color: var(--primary); font-weight: 900; font-size: 1.3em; }
 
-        /* أزرار التواصل */
         .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-bottom: 30px; }
         .btn { text-decoration: none; color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 8px; }
         .whatsapp { background: #25D366; } .facebook { background: #1877F2; } .call { background: var(--gold); }
@@ -45,7 +42,7 @@
 <body>
 
 <header>
-    <img src="images/logo.jpg" onerror="this.src='images/logo.png'" alt="شعار الوحيدي" class="logo-img">
+    <img src="logo.jpg" alt="شعار الوحيدي" class="logo-img">
     <h1>موقع عشيرة الوحيدي</h1>
     <p>بوابة تواصل أبناء العشيرة - ٢٠٢٦</p>
 </header>
@@ -64,7 +61,7 @@
     <div class="news-section">
         <h2 style="color:var(--primary); border-right: 5px solid var(--gold); padding-right: 10px;">آخر الأخبار</h2>
         <div id="content">
-            <p style="text-align:center; color:#888;">أهلاً بك يا أبا حسن.. أضف خبراً في مجلد _news ليظهر هنا فوراً.</p>
+            <p style="text-align:center; color:#888;">أهلاً بك يا أبا حسن.. الموقع الآن جاهز تماماً لعام ٢٠٢٦.</p>
         </div>
     </div>
 </div>
